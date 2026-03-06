@@ -1,6 +1,6 @@
 /* =========================================
-   REDSTONE風 ダークファンタジー・リマスター
-   (バランス調整版：920px)
+   REDSTONE風 ダークファンタジー_リマスター
+   (UI微調整：入力欄の視認性向上)
 ========================================= */
 
 ::-webkit-scrollbar { width: 8px; height: 8px; }
@@ -18,7 +18,6 @@ body {
     line-height: 1.6;
 }
 
-/* ★コンテナ幅を920pxに設定。狭すぎず広すぎないベストバランス。 */
 .container { 
     max-width: 920px; 
     margin: auto; 
@@ -60,7 +59,6 @@ h3 {
     box-shadow: inset 2px 2px 8px rgba(0,0,0,0.8);
 }
 
-/* ★グリッド幅を再調整 */
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
 label { font-size: 0.85rem; display: block; margin-bottom: 5px; color: #a6937c; font-weight: bold; }
 
@@ -81,14 +79,15 @@ input[type="number"], input[type="text"], select {
 .flex-row label { margin: 0; width: 75px; flex-shrink: 0; }
 .flex-row input { flex-grow: 1; }
 
-/* 錬成オプションエリアのレイアウト調整 */
 .rensei-grid { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
-.rensei-single { max-width: 185px; } /* 全属性ボックスの幅を属性側に合わせる */
+.rensei-single { max-width: 185px; }
 .rensei-single input { width: 100px; flex-grow: 0; }
 
 hr { border: 0; border-top: 1px solid #000; border-bottom: 1px solid #2a1f18; margin: 20px 0; }
 
-/* ミニペット設定 */
+/* =========================================
+   ミニペット設定 (入力欄の幅を広げました)
+========================================= */
 .pet-container { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .pet-box { background: linear-gradient(135deg, #140e0a 0%, #0a0705 100%); padding: 15px; border: 1px solid #2a1f18; }
 .pet-box h4 { margin: 0 0 12px 0; color: #a38c6d; font-size: 0.95rem; font-weight: bold; border-bottom: 1px dashed #3d2b1f; padding-bottom: 8px; }
@@ -96,7 +95,15 @@ hr { border: 0; border-top: 1px solid #000; border-bottom: 1px solid #2a1f18; ma
 .pet-row label { flex: 1; font-size: 0.85rem; display: flex; align-items: center; }
 .pet-row input[type="checkbox"] { appearance: none; width: 18px; height: 18px; background: #000; border-radius: 50%; border: 2px solid #2a1f18; cursor: pointer; position: relative; }
 .pet-row input[type="checkbox"]:checked { background: radial-gradient(circle at 30% 30%, #ff8c00, #b22222, #4a0000); }
-.pet-row input[type="number"].pet-lv { width: 42px; background-color: #050302; border: 1px solid #2a1f18; color: #e6b953; }
+
+/* ★ ミニペットのレベル入力欄: 42pxから62pxへ拡張し、数字が見えるように修正 */
+.pet-row input[type="number"].pet-lv { 
+    width: 62px; 
+    padding: 4px 2px 4px 8px; /* 右側に余裕を持たせる */
+    background-color: #050302; 
+    border: 1px solid #2a1f18; 
+    color: #e6b953; 
+}
 
 /* テーブル */
 table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 10px; text-align: center; border: 2px solid #3d2b1f; background: #0f0a07; }
