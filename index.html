@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>REDSTONE 属性抵抗シミュレーター</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>REDSTONE 属性抵抗シミュレーター</h1>
+
+    <div class="grid">
+        <div class="section">
+            <label>知恵ステータス</label>
+            <input type="number" id="input_wisdom" value="0" min="0">
+            <div style="font-size:0.8rem; margin-top:5px; color:#e6b953;">全属性ボーナス: +<span id="disp_wis_bonus">0</span>%</div>
+            <hr>
+            <label>その他加算 (クリーチャーのパッシブ等 %)</label>
+            <input type="number" id="input_other_bonus" value="0" min="0">
+        </div>
+
+        <div class="section">
+            <label>フィールド低下 (GvG/マップ)</label>
+            <select id="input_field">
+                <option value="subain">廃墟スバイン要塞</option>
+                <option value="none">ソゴム山脈 / 赤い丘</option>
+                <option value="elberg">エルベルグ山脈 / 岩の谷</option>
+                <option value="defhills" selected>デフヒルズ / 砂漠の遺跡</option>
+                <option value="babel">バベル大河 / 2粒の涙</option>
+                <option value="nadara">ナダラ平原 / 2つの丘</option>
+                <option value="none">ハノブ / 地下決闘場</option>
+            </select>
+            <hr>
+            <label>ウルトラノヴァ 全属性低下 (MAX90%)</label>
+            <input type="number" id="input_fixed_debuff" value="90" min="0" max="90">
+
+            <label style="margin-top: 10px;">敵の弱化装備 (属性低下120%+魔法弱化120%=MAX240%)</label>
+            <input type="number" id="input_weaken" value="240" min="0" max="240">
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>ミニペット設定</h3>
+        <div class="pet-container">
+            <div class="pet-box">
+                <h4>ミニペット 1</h4>
+                <div class="pet-row"><label><input type="checkbox" value="embrace" data-pet="1" class="pet-check">エンブレイスジュエル</label> Lv <input type="number" id="lv_embrace_1_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_embrace_1_bonus" value="4" min="1" max="4" class="pet-lv"></div>
+                <div class="pet-row"><label><input type="checkbox" value="crystal" data-pet="1" class="pet-check">クリスタル (全ペナ減)</label> Lv <input type="number" id="lv_crystal_1_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_crystal_1_bonus" value="3" min="1" max="4" class="pet-lv"></div>
+                <div class="pet-row"><label><input type="checkbox" value="ruby" data-pet="1" class="pet-check">ルビー (火ペナ減)</label> Lv <input type="number" id="lv_ruby_1_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_ruby_1_bonus" value="3" min="1" max="4" class="pet-lv"></div>
+                <div class="pet-row"><label><input type="checkbox" value="sapphire" data-pet="1" class="pet-check">サファイア (水ペナ減)</label> Lv <input type="number" id="lv_sapphire_1_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_sapphire_1_bonus" value="3" min="1" max="4" class="pet-lv"></div>
+                <div class="pet-row"><label><input type="checkbox" value="emerald" data-pet="1" class="pet-check">エメラルド (風ペナ減)</label> Lv <input type="number" id="lv_emerald_1_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_emerald_1_bonus" value="3" min="1" max="4" class="pet-lv"></div>
+                <div class="pet-row"><label><input type="checkbox" value="topaz" data-pet="1" class="pet-check">トパーズ (土ペナ減)</label> Lv <input type="number" id="lv_topaz_1_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_topaz_1_bonus" value="3" min="1" max="4" class="pet-lv"></div>
+                <div class="pet-row"><label><input type="checkbox" value="diamond" data-pet="1" class="pet-check">ダイヤモンド (光ペナ減)</label> Lv <input type="number" id="lv_diamond_1_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_diamond_1_bonus" value="3" min="1" max="4" class="pet-lv"></div>
+                <div class="pet-row"><label><input type="checkbox" value="onyx" data-pet="1" class="pet-check">オニキス (闇ペナ減)</label> Lv <input type="number" id="lv_onyx_1_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_onyx_1_bonus" value="3" min="1" max="4" class="pet-lv"></div>
+            </div>
+            <div class="pet-box">
+                <h4>ミニペット 2</h4>
+                <div class="pet-row"><label><input type="checkbox" value="embrace" data-pet="2" class="pet-check">エンブレイスジュエル</label> Lv <input type="number" id="lv_embrace_2_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_embrace_2_bonus" value="4" min="1" max="4" class="pet-lv"></div>
+                <div class="pet-row"><label><input type="checkbox" value="crystal" data-pet="2" class="pet-check">クリスタル (全ペナ減)</label> Lv <input type="number" id="lv_crystal_2_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_crystal_2_bonus" value="3" min="1" max="4" class="pet-lv"></div>
+                <div class="pet-row"><label><input type="checkbox" value="ruby" data-pet="2" class="pet-check">ルビー (火ペナ減)</label> Lv <input type="number" id="lv_ruby_2_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_ruby_2_bonus" value="3" min="1" max="4" class="pet-lv"></div>
+                <div class="pet-row"><label><input type="checkbox" value="sapphire" data-pet="2" class="pet-check">サファイア (水ペナ減)</label> Lv <input type="number" id="lv_sapphire_2_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_sapphire_2_bonus" value="3" min="1" max="4" class="pet-lv"></div>
+                <div class="pet-row"><label><input type="checkbox" value="emerald" data-pet="2" class="pet-check">エメラルド (風ペナ減)</label> Lv <input type="number" id="lv_emerald_2_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_emerald_2_bonus" value="3" min="1" max="4" class="pet-lv"></div>
+                <div class="pet-row"><label><input type="checkbox" value="topaz" data-pet="2" class="pet-check">トパーズ (土ペナ減)</label> Lv <input type="number" id="lv_topaz_2_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_topaz_2_bonus" value="3" min="1" max="4" class="pet-lv"></div>
+                <div class="pet-row"><label><input type="checkbox" value="diamond" data-pet="2" class="pet-check">ダイヤモンド (光ペナ減)</label> Lv <input type="number" id="lv_diamond_2_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_diamond_2_bonus" value="3" min="1" max="4" class="pet-lv"></div>
+                <div class="pet-row"><label><input type="checkbox" value="onyx" data-pet="2" class="pet-check">オニキス (闇ペナ減)</label> Lv <input type="number" id="lv_onyx_2_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_onyx_2_bonus" value="3" min="1" max="4" class="pet-lv"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="equip_section">
+        <h3>装備構成</h3>
+        <div class="notice-text">※属性抵抗値の上がる装備をつけている場合のみ入力してください。</div>
+        
+        <div class="grid" id="equip_container" style="grid-template-columns: 1fr 1fr;">
+            </div>
+
+        <hr>
+
+        <h4 style="color: #e6b953; font-size: 1.1rem; margin: 0 0 10px 0; border-bottom: 1px dashed #3d2b1f; padding-bottom: 5px;">錬成・製錬オプション</h4>
+        <div class="notice-text" style="margin-top: 5px; margin-bottom: 20px; border-left-color: #e6b953;">
+            ※装備に付与されている「錬成OP」や「製錬OP」による抵抗値の合計をこちらに入力してください。
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <div class="flex-row rensei-single">
+                <label style="width:70px; color:#e6b953;">全属性</label>
+                <input type="number" id="rensei_all" value="0" min="0">
+            </div>
+        </div>
+
+        <div class="grid rensei-grid">
+            <div class="flex-row rensei-item">
+                <label style="width:50px;" class="attr-fire">火</label>
+                <input type="number" id="rensei_fire" value="0" min="0">
+            </div>
+            <div class="flex-row rensei-item">
+                <label style="width:50px;" class="attr-water">水</label>
+                <input type="number" id="rensei_water" value="0" min="0">
+            </div>
+            <div class="flex-row rensei-item">
+                <label style="width:50px;" class="attr-wind">風</label>
+                <input type="number" id="rensei_wind" value="0" min="0">
+            </div>
+            <div class="flex-row rensei-item">
+                <label style="width:50px;" class="attr-earth">土</label>
+                <input type="number" id="rensei_earth" value="0" min="0">
+            </div>
+            <div class="flex-row rensei-item">
+                <label style="width:50px;" class="attr-light">光</label>
+                <input type="number" id="rensei_light" value="0" min="0">
+            </div>
+            <div class="flex-row rensei-item">
+                <label style="width:50px;" class="attr-dark">闇</label>
+                <input type="number" id="rensei_dark" value="0" min="0">
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>計算結果</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>属性</th>
+                    <th>属性抵抗合計<br><span class="calc-sub">(基礎)</span></th>
+                    <th>低下<br><span class="calc-sub">(ﾏｯﾌﾟ+ﾉｳﾞｧ等)</span></th>
+                    <th>弱化<br><span class="calc-sub">(敵から)</span></th>
+                    <th>最終有効抵抗<br><span class="calc-sub">(上限70)</span></th>
+                </tr>
+            </thead>
+            <tbody id="result_tbody">
+                </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="module" src="script/main.js"></script>
+</body>
+</html>

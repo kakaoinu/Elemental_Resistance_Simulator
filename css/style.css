@@ -1,0 +1,116 @@
+/* =========================================
+   REDSTONE風 ダークファンタジー・リマスター
+   (バランス調整版：920px)
+========================================= */
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #0c0806; border-left: 1px solid #2a1f18; }
+::-webkit-scrollbar-thumb { background: #3d2b1f; border: 1px solid #5c4326; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #8a6538; }
+
+body { 
+    font-family: 'Meiryo', 'メイリオ', 'MS PGothic', 'ＭＳ Ｐゴシック', 'Segoe UI', sans-serif;
+    background-color: #0c0806;
+    background-image: radial-gradient(circle at center, #1f1610 0%, #080503 100%);
+    color: #d4c4a9; 
+    margin: 0; 
+    padding: 20px 15px; 
+    line-height: 1.6;
+}
+
+/* ★コンテナ幅を920pxに設定。狭すぎず広すぎないベストバランス。 */
+.container { 
+    max-width: 920px; 
+    margin: auto; 
+    background: rgba(15, 10, 7, 0.85);
+    padding: 25px 30px; 
+    border: 2px solid #2a1f18; 
+    border-radius: 3px;
+    box-shadow: 0 0 0 4px #000, 0 0 0 6px #5c4326, inset 0 0 30px rgba(0,0,0,0.9);
+}
+
+h1 { 
+    font-size: 1.5rem; 
+    text-align: center; 
+    color: #e6b953; 
+    text-shadow: 2px 2px 4px #000;
+    border-bottom: 3px double #5c4326; 
+    padding-bottom: 12px; 
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+h1::before, h1::after { content: '✦'; color: #8a6538; margin: 0 10px; font-size: 1.1rem; }
+
+h3 {
+    font-size: 1.1rem;
+    color: #d4a373;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: bold;
+    border-bottom: 1px solid #3d2b1f;
+    padding-bottom: 5px;
+}
+
+.section { 
+    margin-bottom: 25px; 
+    padding: 18px 22px; 
+    background-color: rgba(5, 3, 2, 0.6); 
+    border: 1px solid #2a1f18; 
+    box-shadow: inset 2px 2px 8px rgba(0,0,0,0.8);
+}
+
+/* ★グリッド幅を再調整 */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+label { font-size: 0.85rem; display: block; margin-bottom: 5px; color: #a6937c; font-weight: bold; }
+
+input[type="number"], input[type="text"], select { 
+    width: 100%; 
+    padding: 7px 10px; 
+    box-sizing: border-box; 
+    background-color: #050302; 
+    border: 1px solid #3d2b1f; 
+    color: #e6b953; 
+    border-radius: 2px; 
+    font-size: 0.95rem;
+    font-weight: bold;
+    box-shadow: inset 1px 1px 4px rgba(0,0,0,0.9);
+}
+
+.flex-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.flex-row label { margin: 0; width: 75px; flex-shrink: 0; }
+.flex-row input { flex-grow: 1; }
+
+/* 錬成オプションエリアのレイアウト調整 */
+.rensei-grid { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+.rensei-single { max-width: 185px; } /* 全属性ボックスの幅を属性側に合わせる */
+.rensei-single input { width: 100px; flex-grow: 0; }
+
+hr { border: 0; border-top: 1px solid #000; border-bottom: 1px solid #2a1f18; margin: 20px 0; }
+
+/* ミニペット設定 */
+.pet-container { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.pet-box { background: linear-gradient(135deg, #140e0a 0%, #0a0705 100%); padding: 15px; border: 1px solid #2a1f18; }
+.pet-box h4 { margin: 0 0 12px 0; color: #a38c6d; font-size: 0.95rem; font-weight: bold; border-bottom: 1px dashed #3d2b1f; padding-bottom: 8px; }
+.pet-row { display: flex; align-items: center; gap: 5px; margin-bottom: 8px; }
+.pet-row label { flex: 1; font-size: 0.85rem; display: flex; align-items: center; }
+.pet-row input[type="checkbox"] { appearance: none; width: 18px; height: 18px; background: #000; border-radius: 50%; border: 2px solid #2a1f18; cursor: pointer; position: relative; }
+.pet-row input[type="checkbox"]:checked { background: radial-gradient(circle at 30% 30%, #ff8c00, #b22222, #4a0000); }
+.pet-row input[type="number"].pet-lv { width: 42px; background-color: #050302; border: 1px solid #2a1f18; color: #e6b953; }
+
+/* テーブル */
+table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 10px; text-align: center; border: 2px solid #3d2b1f; background: #0f0a07; }
+th, td { border-bottom: 1px solid #1f1610; border-right: 1px solid #1f1610; padding: 10px; }
+th { background: linear-gradient(180deg, #2a1f18 0%, #140e0a 100%); color: #d4a373; font-size: 0.9rem; }
+td { color: #d4c4a9; font-weight: bold; font-size: 0.95rem; }
+
+.val-final { font-size: 1.4rem; color: #ff6b6b; font-weight: bold; text-shadow: 0 0 8px rgba(200, 0, 0, 0.6); }
+.calc-sub { color: #8a735c; font-size: 0.75rem; }
+.notice-text { font-size: 0.8rem; color: #d4a373; background: rgba(20,10,5,0.5); padding: 8px 12px; border-left: 3px solid #b22222; margin-bottom: 20px; font-weight: bold;}
+
+.attr-fire { color: #ff6b6b !important; }
+.attr-water { color: #73c2ff !important; }
+.attr-wind { color: #6bf5a4 !important; }
+.attr-earth { color: #e6c273 !important; }
+.attr-light { color: #fffcbd !important; }
+.attr-dark { color: #d09eff !important; }
