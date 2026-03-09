@@ -203,6 +203,7 @@ function calculate() {
     let wis = Math.max(0, parseInt(document.getElementById('input_wisdom').value) || 0);
     const wisBonus = getWisdomBonus(wis);
     document.getElementById('disp_wis_bonus').innerText = wisBonus;
+    const rsBonus = document.getElementById('check_redstone').checked ? 5 : 0;
 
     let otherBonus = Math.max(0, parseInt(document.getElementById('input_other_bonus').value) || 0);
     const petEffects = getPetBonuses();
@@ -224,7 +225,7 @@ function calculate() {
         });
 
         let rSpec = Math.max(0, parseInt(document.getElementById(`rensei_${attr.key}`).value) || 0);
-        const baseTotal = equipTotal + wisBonus + otherBonus + petEffects.allRes + rAll + rSpec;
+        const baseTotal = equipTotal + wisBonus + otherBonus + petEffects.allRes + rAll + rSpec + rsBonus;
 
         let fDebuff = Math.max(0, fieldObj[attr.key] - petEffects.penReduc[attr.key]);
         let finalBase = baseTotal - fDebuff - fixed - weak;

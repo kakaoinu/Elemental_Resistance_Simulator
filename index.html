@@ -10,36 +10,63 @@
 <div class="container">
     <h1>REDSTONE 属性抵抗シミュレーター</h1>
 
-    <div class="grid">
+<div class="grid">
         <div class="section">
-            <label>知恵ステータス</label>
-            <input type="number" id="input_wisdom" value="0" min="0">
-            <div style="font-size:0.8rem; margin-top:5px; color:#e6b953;">全属性ボーナス: +<span id="disp_wis_bonus">0</span>%</div>
+            <h3 style="border-bottom: none; margin-bottom: 10px;">基本ボーナス</h3>
+            
+            <div class="input-block">
+                <label>知恵ステータス</label>
+                <input type="number" id="input_wisdom" value="0" min="0">
+                <div class="sub-text" style="color:#e6b953;">全属性ボーナス: +<span id="disp_wis_bonus">0</span>%</div>
+            </div>
             <hr>
-            <label>その他加算 (クリーチャーのパッシブ等 %)</label>
-            <input type="number" id="input_other_bonus" value="0" min="0">
+            <div class="input-block">
+                <label>その他加算 (クリーチャー等 %)</label>
+                <input type="number" id="input_other_bonus" value="0" min="0">
+                <div class="sub-text" style="visibility: hidden;">spacer</div>
+            </div>
+            <hr>
+            <div class="input-block">
+                <label style="visibility: hidden;">spacer</label> <div class="flex-row" style="margin: 0; padding: 5px 0;">
+                    <label style="width: auto; cursor: pointer; display: flex; align-items: center; color: #e6b953; font-weight: bold; margin: 0;">
+                        <input type="checkbox" id="check_redstone" class="rs-check-custom">
+                        REDSTONE所持 (全属性+5%)
+                    </label>
+                </div>
+                <div class="sub-text" style="visibility: hidden;">spacer</div>
+            </div>
         </div>
 
         <div class="section">
-            <label>フィールド低下 (GvG/マップ)</label>
-            <select id="input_field">
-                <option value="subain">廃墟スバイン要塞</option>
-                <option value="none">ソゴム山脈 / 赤い丘</option>
-                <option value="elberg">エルベルグ山脈 / 岩の谷</option>
-                <option value="defhills" selected>デフヒルズ / 砂漠の遺跡</option>
-                <option value="babel">バベル大河 / 2粒の涙</option>
-                <option value="nadara">ナダラ平原 / 2つの丘</option>
-                <option value="none">ハノブ / 地下決闘場</option>
-            </select>
-            <hr>
-            <label>ウルトラノヴァ 全属性低下 (MAX90%)</label>
-            <input type="number" id="input_fixed_debuff" value="90" min="0" max="90">
+            <h3 style="border-bottom: none; margin-bottom: 10px;">フィールド・デバフ</h3>
 
-            <label style="margin-top: 10px;">敵の弱化装備 (属性低下120%+魔法弱化120%=MAX240%)</label>
-            <input type="number" id="input_weaken" value="240" min="0" max="240">
+            <div class="input-block">
+                <label>フィールド低下 (GvG/マップ)</label>
+                <select id="input_field">
+                    <option value="subain">廃墟スバイン要塞</option>
+                    <option value="none">ソゴム山脈 / 赤い丘</option>
+                    <option value="elberg">エルベルグ山脈 / 岩の谷</option>
+                    <option value="defhills" selected>デフヒルズ / 砂漠の遺跡</option>
+                    <option value="babel">バベル大河 / 2粒の涙</option>
+                    <option value="nadara">ナダラ平原 / 2つの丘</option>
+                    <option value="none">ハノブ / 地下決闘場</option>
+                </select>
+                <div class="sub-text" style="visibility: hidden;">spacer</div>
+            </div>
+            <hr>
+            <div class="input-block">
+                <label>ウルトラノヴァ 低下 (MAX90%)</label>
+                <input type="number" id="input_fixed_debuff" value="90" min="0" max="90">
+                <div class="sub-text" style="visibility: hidden;">spacer</div>
+            </div>
+            <hr>
+            <div class="input-block">
+                <label style="line-height: 1.2;">敵の弱化装備 (魔法+属性弱化: MAX240%)</label>
+                <input type="number" id="input_weaken" value="240" min="0" max="240">
+                <div class="sub-text" style="visibility: hidden;">spacer</div>
+            </div>
         </div>
     </div>
-
     <div class="section">
         <h3>ミニペット設定</h3>
         <div class="pet-container">

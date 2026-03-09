@@ -75,6 +75,26 @@ input[type="number"], input[type="text"], select {
     box-shadow: inset 1px 1px 4px rgba(0,0,0,0.9);
 }
 
+.rs-check-custom {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #000;
+    border-radius: 50%;
+    border: 2px solid #5c4326;
+    cursor: pointer;
+    position: relative;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.rs-check-custom:checked {
+    background: radial-gradient(circle at 30% 30%, #ff8c00, #b22222, #4a0000);
+    box-shadow: 0 0 10px rgba(255, 60, 60, 0.6), inset 0 0 2px rgba(255, 255, 255, 0.4);
+    border-color: #5c4326;
+}
+
 .flex-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
 .flex-row label { margin: 0; width: 75px; flex-shrink: 0; }
 .flex-row input { flex-grow: 1; }
@@ -104,6 +124,7 @@ hr { border: 0; border-top: 1px solid #000; border-bottom: 1px solid #2a1f18; ma
     border: 1px solid #2a1f18; 
     color: #e6b953; 
 }
+
 
 /* テーブル */
 table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 10px; text-align: center; border: 2px solid #3d2b1f; background: #0f0a07; }
