@@ -95,6 +95,26 @@ input[type="number"], input[type="text"], select {
     border-color: #5c4326;
 }
 
+.input-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.sub-text {
+    font-size: 0.8rem;
+    margin-top: 5px;
+    height: 1.2rem; /* 高さを固定 */
+    line-height: 1.2rem;
+}
+
+.input-block label {
+    height: 2.4rem; /* 2行分の高さを確保 */
+    display: flex;
+    align-items: flex-end; /* 下揃えにして入力欄との距離を一定に */
+    margin-bottom: 5px;
+}
+
 .flex-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
 .flex-row label { margin: 0; width: 75px; flex-shrink: 0; }
 .flex-row input { flex-grow: 1; }
