@@ -10,10 +10,9 @@
 <div class="container">
     <h1>REDSTONE 属性抵抗シミュレーター</h1>
 
-<div class="grid">
+    <div class="grid">
         <div class="section">
             <h3 style="border-bottom: none; margin-bottom: 10px;">基本ボーナス</h3>
-            
             <div class="input-block">
                 <label>知恵ステータス</label>
                 <input type="number" id="input_wisdom" value="0" min="0">
@@ -27,19 +26,26 @@
             </div>
             <hr>
             <div class="input-block">
-                <label style="visibility: hidden;">spacer</label> <div class="flex-row" style="margin: 0; padding: 5px 0;">
-                    <label style="width: auto; cursor: pointer; display: flex; align-items: center; color: #e6b953; font-weight: bold; margin: 0;">
+                <label>追加ボーナス</label>
+                <div class="bonus-group">
+                    <label class="compact-check">
                         <input type="checkbox" id="check_redstone" class="rs-check-custom">
-                        REDSTONE所持 (全属性+5%)
+                        <span>REDSTONE所持 (+5%)</span>
+                    </label>
+                    <label class="compact-check">
+                        <input type="checkbox" id="check_mb" class="rs-check-custom">
+                        <span>MB (+14%)</span>
+                    </label>
+                    <label class="compact-check">
+                        <input type="checkbox" id="check_potential" class="rs-check-custom">
+                        <span>潜在Lv29 (+10%)</span>
                     </label>
                 </div>
-                <div class="sub-text" style="visibility: hidden;">spacer</div>
             </div>
         </div>
 
         <div class="section">
             <h3 style="border-bottom: none; margin-bottom: 10px;">フィールド・デバフ</h3>
-
             <div class="input-block">
                 <label>フィールド低下 (GvG/マップ)</label>
                 <select id="input_field">
@@ -68,29 +74,43 @@
         </div>
     </div>
     <div class="section">
-        <h3>ミニペット設定</h3>
-        <div class="pet-container">
-            <div class="pet-box">
-                <h4>ミニペット 1</h4>
-                <div class="pet-row"><label><input type="checkbox" value="embrace" data-pet="1" class="pet-check">エンブレイスジュエル</label> Lv <input type="number" id="lv_embrace_1_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_embrace_1_bonus" value="4" min="1" max="4" class="pet-lv"></div>
-                <div class="pet-row"><label><input type="checkbox" value="crystal" data-pet="1" class="pet-check">クリスタル (全ペナ減)</label> Lv <input type="number" id="lv_crystal_1_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_crystal_1_bonus" value="3" min="1" max="4" class="pet-lv"></div>
-                <div class="pet-row"><label><input type="checkbox" value="ruby" data-pet="1" class="pet-check">ルビー (火ペナ減)</label> Lv <input type="number" id="lv_ruby_1_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_ruby_1_bonus" value="3" min="1" max="4" class="pet-lv"></div>
-                <div class="pet-row"><label><input type="checkbox" value="sapphire" data-pet="1" class="pet-check">サファイア (水ペナ減)</label> Lv <input type="number" id="lv_sapphire_1_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_sapphire_1_bonus" value="3" min="1" max="4" class="pet-lv"></div>
-                <div class="pet-row"><label><input type="checkbox" value="emerald" data-pet="1" class="pet-check">エメラルド (風ペナ減)</label> Lv <input type="number" id="lv_emerald_1_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_emerald_1_bonus" value="3" min="1" max="4" class="pet-lv"></div>
-                <div class="pet-row"><label><input type="checkbox" value="topaz" data-pet="1" class="pet-check">トパーズ (土ペナ減)</label> Lv <input type="number" id="lv_topaz_1_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_topaz_1_bonus" value="3" min="1" max="4" class="pet-lv"></div>
-                <div class="pet-row"><label><input type="checkbox" value="diamond" data-pet="1" class="pet-check">ダイヤモンド (光ペナ減)</label> Lv <input type="number" id="lv_diamond_1_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_diamond_1_bonus" value="3" min="1" max="4" class="pet-lv"></div>
-                <div class="pet-row"><label><input type="checkbox" value="onyx" data-pet="1" class="pet-check">オニキス (闇ペナ減)</label> Lv <input type="number" id="lv_onyx_1_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_onyx_1_bonus" value="3" min="1" max="4" class="pet-lv"></div>
+        <h3>石像ランク (抵抗+1% / ペナ減+3% / MAX Lv5)</h3>
+        
+        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 15px;">
+            <div class="flex-row">
+                <label class="attr-all" style="width:210px; font-size:0.8rem;">ケーメンの冠.枠飾り(全属性抵抗)</label>
+                <input type="number" id="statue_all" value="0" min="0" max="5">
             </div>
-            <div class="pet-box">
-                <h4>ミニペット 2</h4>
-                <div class="pet-row"><label><input type="checkbox" value="embrace" data-pet="2" class="pet-check">エンブレイスジュエル</label> Lv <input type="number" id="lv_embrace_2_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_embrace_2_bonus" value="4" min="1" max="4" class="pet-lv"></div>
-                <div class="pet-row"><label><input type="checkbox" value="crystal" data-pet="2" class="pet-check">クリスタル (全ペナ減)</label> Lv <input type="number" id="lv_crystal_2_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_crystal_2_bonus" value="3" min="1" max="4" class="pet-lv"></div>
-                <div class="pet-row"><label><input type="checkbox" value="ruby" data-pet="2" class="pet-check">ルビー (火ペナ減)</label> Lv <input type="number" id="lv_ruby_2_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_ruby_2_bonus" value="3" min="1" max="4" class="pet-lv"></div>
-                <div class="pet-row"><label><input type="checkbox" value="sapphire" data-pet="2" class="pet-check">サファイア (水ペナ減)</label> Lv <input type="number" id="lv_sapphire_2_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_sapphire_2_bonus" value="3" min="1" max="4" class="pet-lv"></div>
-                <div class="pet-row"><label><input type="checkbox" value="emerald" data-pet="2" class="pet-check">エメラルド (風ペナ減)</label> Lv <input type="number" id="lv_emerald_2_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_emerald_2_bonus" value="3" min="1" max="4" class="pet-lv"></div>
-                <div class="pet-row"><label><input type="checkbox" value="topaz" data-pet="2" class="pet-check">トパーズ (土ペナ減)</label> Lv <input type="number" id="lv_topaz_2_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_topaz_2_bonus" value="3" min="1" max="4" class="pet-lv"></div>
-                <div class="pet-row"><label><input type="checkbox" value="diamond" data-pet="2" class="pet-check">ダイヤモンド (光ペナ減)</label> Lv <input type="number" id="lv_diamond_2_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_diamond_2_bonus" value="3" min="1" max="4" class="pet-lv"></div>
-                <div class="pet-row"><label><input type="checkbox" value="onyx" data-pet="2" class="pet-check">オニキス (闇ペナ減)</label> Lv <input type="number" id="lv_onyx_2_base" value="5" min="1" max="5" class="pet-lv"><span class="plus">+</span><input type="number" id="lv_onyx_2_bonus" value="3" min="1" max="4" class="pet-lv"></div>
+            <div class="flex-row">
+                <label class="attr-light" style="width:210px; font-size:0.8rem;">ラークの刀.鞘(光) [全ペナ減]</label>
+                <input type="number" id="statue_all_pen" value="0" min="0" max="5">
+            </div>
+        </div>
+
+        <div class="grid statue-grid-row" style="grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));">
+            <div class="flex-row statue-item">
+                <label class="attr-fire" style="width:160px; font-size:0.8rem;">ナルの神像.胴体(火)</label>
+                <input type="number" id="statue_fire" value="0" min="0" max="5">
+            </div>
+            <div class="flex-row statue-item">
+                <label class="attr-water" style="width:160px; font-size:0.8rem;">ネーンの杯.器(水)</label>
+                <input type="number" id="statue_water" value="0" min="0" max="5">
+            </div>
+            <div class="flex-row statue-item">
+                <label class="attr-wind" style="width:160px; font-size:0.8rem;">スルの杖.シャフト(風)</label>
+                <input type="number" id="statue_wind" value="0" min="0" max="5">
+            </div>
+            <div class="flex-row statue-item">
+                <label class="attr-earth" style="width:160px; font-size:0.8rem;">ケーメンの冠.本体(土)</label>
+                <input type="number" id="statue_earth" value="0" min="0" max="5">
+            </div>
+            <div class="flex-row statue-item">
+                <label class="attr-light" style="width:160px; font-size:0.8rem;">ラークの刀.刀身(光)</label>
+                <input type="number" id="statue_light" value="0" min="0" max="5">
+            </div>
+            <div class="flex-row statue-item">
+                <label class="attr-dark" style="width:160px; font-size:0.8rem;">シロイオのホール.本体(闇)</label>
+                <input type="number" id="statue_dark" value="0" min="0" max="5">
             </div>
         </div>
     </div>

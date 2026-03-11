@@ -115,6 +115,43 @@ input[type="number"], input[type="text"], select {
     margin-bottom: 5px;
 }
 
+/* 石像セクション専用レイアウト */
+.statue-grid-row {
+    display: grid;
+    /* ラベルが長いため、1列の最小幅を広めに設定 */
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 10px;
+}
+
+.statue-single {
+    max-width: 180px; /* 全属性入力欄の横幅を制限 */
+}
+
+.statue-item label {
+    white-space: nowrap; /* 折り返し防止 */
+    overflow: hidden;
+    text-overflow: ellipsis; /* 入り切らない場合は「...」にするが、基本は見せる */
+}
+/* ボーナスグループの余白微調整 */
+.bonus-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 5px;
+}
+
+.compact-check {
+    display: flex !important;
+    align-items: center !important;
+    height: 24px !important;
+    color: #e6b953;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.attr-all { color: #e6b953 !important; }
+
+
 .flex-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
 .flex-row label { margin: 0; width: 75px; flex-shrink: 0; }
 .flex-row input { flex-grow: 1; }
